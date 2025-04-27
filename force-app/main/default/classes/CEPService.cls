@@ -9,7 +9,7 @@ public with sharing class CEPService {
         if (response.getStatusCode() == 200) {
             return response.getBody();
         } else {
-            throw new AuraHandledException('Erro ao consultar o CEP: ' + response.getStatus());
+            throw new AuraHandledException('Erro ao consultar o CEP: Código de status ' + response.getStatusCode());
         }
     }
 }

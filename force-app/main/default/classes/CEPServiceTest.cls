@@ -1,39 +1,29 @@
 @isTest
 private class CEPServiceTest {
-
+    
     @isTest
     static void testBuscarEnderecoSucesso() {
-        Test.setMock(HttpCalloutMock.class, new CEPServiceMockSuccess());
+        Test.setMock(HttpCalloutMock.class, new CEPServiceMockSuccesso());
 
         Test.startTest();
-        String resultJson = CEPService.buscarEndereco('01001000');
+        String resultado = CEPService.buscarEndereco('01001-000');
         Test.stopTest();
 
-        System.assertNotEquals(null, resultJson, 'O retorno não deveria ser nulo.');
-        System.assert(resultJson.contains('Praça da Sé'), 'O retorno deveria conter o nome da rua.');
+        System.assertNotEquals(null, resultado, 'O resultado não deveria ser nulo');
+        System.assert(resultado.contains('São Paulo'), 'O resultado deveria conter a cidade São Paulo');
     }
 
     @isTest
-    static void testBuscarEnderecoFalha() {
+    static void testBuscarEnderecoErro() {
         Test.setMock(HttpCalloutMock.class, new CEPServiceMockErro());
 
         Test.startTest();
-        Boolean exceptionThrown = false;
         try {
-            CEPService.buscarEndereco('00000000');
+            CEPService.buscarEndereco('99999-999');
+            System.assert(false, 'Deveria ter lançado uma exceção');
         } catch (AuraHandledException e) {
-            exceptionThrown = true;
-            System.debug('Mensagem capturada: ' + e.getMessage());
-            System.assert(
-                e.getMessage().startsWith('Erro ao consultar o CEP:'),
-                'Mensagem de erro inesperada: ' + e.getMessage()
-            );
+            System.assert(e.getMessage().contains('Erro ao consultar o CEP'), 'Mensagem de erro incorreta');
         }
         Test.stopTest();
-
-        System.assert(
-            exceptionThrown,
-            'Era esperado que uma exceção fosse lançada, mas nenhuma foi capturada.'
-        );
     }
 }

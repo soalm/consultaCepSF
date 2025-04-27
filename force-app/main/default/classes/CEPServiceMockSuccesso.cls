@@ -1,5 +1,5 @@
 @isTest
-public class CEPServiceMockSuccess implements HttpCalloutMock {
+public class CEPServiceMockSuccesso implements HttpCalloutMock {
     public HTTPResponse respond(HTTPRequest request) {
         HttpResponse response = new HttpResponse();
         response.setHeader('Content-Type', 'application/json');
