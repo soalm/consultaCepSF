@@ -1,95 +1,108 @@
-🔎 Consulta de CEP no Salesforce
-Bem-vindo(a)!
-Este projeto foi desenvolvido para realizar consultas de endereço a partir de um CEP, utilizando Apex e Lightning Web Components (LWC) no Salesforce.
+# 🔎 Consulta de CEP no Salesforce
 
-A ideia é oferecer uma solução prática para preencher automaticamente os campos de endereço em formulários, melhorando a experiência dos usuários.
+> Projeto Salesforce para consultar dados de endereço a partir de um CEP, utilizando integração com API externa e Lightning Web Components.
 
-✨ Tecnologias Utilizadas
-Salesforce Apex (Lógica de negócio)
+---
 
-Lightning Web Components (LWC) (Interface)
+## ✨ Tecnologias utilizadas
 
-API pública de consulta de CEP
+*   Salesforce Apex
+*   Lightning Web Components (LWC)
+*   API pública de consulta de CEP ([BrasilAPI](https://brasilapi.com.br/))
+*   Testes unitários com Mock HTTP (Apex)
 
-Testes unitários com Mock de Callout HTTP no Apex
+---
 
-📦 Estrutura do Projeto
-bash
-Copiar
-Editar
+## 📦 Estrutura do projeto
+
+```css
 force-app/
  └── main/
       └── default/
            ├── classes/
-           │     ├── CEPService.cls        # Classe Apex que realiza a chamada HTTP
-           │     ├── CEPServiceMock.cls     # Classe Mock para testes
-           │     └── CEPServiceTest.cls     # Classe de testes unitários
+           │     ├── CEPService.cls         # Classe Apex principal
+           │     ├── CEPServiceMock.cls      # Mock de Callout para testes
+           │     └── CEPServiceTest.cls      # Classe de testes unitários
            └── lwc/
                  └── consultaCEP/
-                       ├── consultaCEP.html  # Componente HTML
-                       ├── consultaCEP.js     # Lógica JavaScript
-                       └── consultaCEP.js-meta.xml # Metadata LWC
-🎯 Funcionalidades
-Digitar o CEP e buscar automaticamente:
+                       ├── consultaCEP.html   # Estrutura do componente
+                       ├── consultaCEP.js     # Lógica do componente
+                       └── consultaCEP.js-meta.xml # Configuração do componente
+```
 
-Estado (UF)
+---
 
-Cidade
+## 🏯 Funcionalidades
 
-Bairro
+*   Consulta automática de:
+    *   Estado (UF)
+    *   Cidade
+    *   Bairro
+    *   Rua
+*   Exibição de mensagens de erro amigáveis.
+*   Cobertura de testes com simulação de chamadas externas (Mock).
+*   Código seguindo boas práticas de desenvolvimento Salesforce.
 
-Rua
+---
 
-Exibição de mensagens de erro amigáveis caso o CEP não seja encontrado.
+## 🚀 Como instalar e configurar
 
-Cobertura de testes unitários com mocks de chamadas HTTP.
+### 1\. Clone o projeto:
 
-🚀 Como usar
-Clone o repositório:
-
-bash
-Copiar
-Editar
+```css
 git clone https://github.com/seu-usuario/consulta-cep-salesforce.git
-Faça o deploy do projeto para sua org Salesforce usando o VS Code com Salesforce Extensions.
+```
 
-Configure a Remote Site Settings (obrigatório):
+### 2\. Faça o deploy para sua Org Salesforce:
 
-No Setup do Salesforce, procure por "Remote Site Settings".
+Use o Salesforce CLI ou a extensão do VS Code para Salesforce.
 
-Clique em "New Remote Site".
+### 3\. Configure o Remote Site Settings:
 
-Preencha:
+Para permitir que o Salesforce faça chamadas HTTP externas:
 
-Remote Site Name: BrasilAPI (ou qualquer nome que quiser)
+*   Acesse o **Setup** ➔ Pesquise por "**Remote Site Settings**".
+*   Clique em **New Remote Site**.
+*   Preencha:
+    *   **Remote Site Name**: BrasilAPI
+    *   **Remote Site URL**: `https://brasilapi.com.br`
+*   Salve.
 
-Remote Site URL: https://brasilapi.com.br
+> ⚠️ Esta configuração é obrigatória para que a consulta funcione!
 
-Salve.
+### 4\. Adicione o componente ConsultaCEP:
 
-Isso é necessário para que o Salesforce permita fazer chamadas para a API externa.
+*   No App Builder, adicione o componente LWC `ConsultaCEP` em uma página de registro ou de aplicativo.
 
-Adicione o componente ConsultaCEP a uma página no App Builder.
+---
 
-Insira um CEP válido e veja a mágica acontecer! ✨
+## 🧪 Como executar os testes
 
-🧪 Rodando os testes
-No Salesforce:
+*   Acesse o **Developer Console** ➔ **Test** ➔ **New Run**.
+*   Selecione a classe `CEPServiceTest`.
+*   Execute os testes.
 
-Abra o Developer Console ➔ Test ➔ New Run.
+> ✅ Todos os testes simulam chamadas HTTP usando Mock, conforme boas práticas de teste unitário em Salesforce.
 
-Selecione a classe CEPServiceTest.
+---
 
-Execute os testes para validar o comportamento e a cobertura de código.
+## 📖 Exemplo de resposta da API
 
-🙌 Sobre o projeto
-Este projeto foi criado como um desafio de prática e aprendizado de integração de Salesforce com APIs externas, utilizando as melhores práticas de desenvolvimento seguro, tratamento de exceções e testes de unidade.
+```css
+{
+  "cep": "01001000",
+  "state": "SP",
+  "city": "São Paulo",
+  "neighborhood": "Sé",
+  "street": "Praça da Sé"
+}
+```
 
-Se te ajudou ou te inspirou, ⭐ deixe uma estrela no repositório!
+---
 
-📫 Contato
-Se quiser conversar sobre Salesforce, desenvolvimento ou projetos, sinta-se à vontade para me chamar:
+## 📢 Contato
 
-Email: [seu-email@email.com]
+Se quiser conversar sobre Salesforce, APIs ou projetos de desenvolvimento:
 
-LinkedIn: [seu-linkedin]
+*   [**Email**](mailto:1samueloliveira@gmail.com)
+*   [**LinkedIn**](https://www.linkedin.com/in/samueloal/)
