@@ -19,15 +19,20 @@
 force-app/
  └── main/
       └── default/
-           ├── classes/
-           │     ├── CEPService.cls         # Classe Apex principal
-           │     ├── CEPServiceMock.cls      # Mock de Callout para testes
-           │     └── CEPServiceTest.cls      # Classe de testes unitários
-           └── lwc/
-                 └── consultaCEP/
-                       ├── consultaCEP.html   # Estrutura do componente
-                       ├── consultaCEP.js     # Lógica do componente
-                       └── consultaCEP.js-meta.xml # Configuração do componente
+           └── classes/
+            ├── CEPService.cls
+            ├── CEPService.cls-meta.xml
+            ├── CEPServiceMockErro.cls
+            ├── CEPServiceMockErro.cls-meta.xml
+            ├── CEPServiceMockSucesso.cls
+            ├── CEPServiceMockSucesso.cls-meta.xml
+            ├── CEPServiceTest.cls
+            └── CEPServiceTest.cls-meta.xml
+      └── lwc/
+           └── consultaCEP/
+            ├── consultaCEP.html 
+            ├── consultaCEP.js   
+            └── consultaCEP.js-meta.xml 
 ```
 
 ---
