@@ -20,14 +20,12 @@ force-app/
  └── main/
       └── default/
            └── classes/
-            ├── CEPService.cls
-            ├── CEPService.cls-meta.xml
-            ├── CEPServiceMockErro.cls
-            ├── CEPServiceMockErro.cls-meta.xml
-            ├── CEPServiceMockSucesso.cls
-            ├── CEPServiceMockSucesso.cls-meta.xml
-            ├── CEPServiceTest.cls
-            └── CEPServiceTest.cls-meta.xml
+            ├── ConsultaCEP.cls
+            ├── ConsultaCEP.cls-meta.xml
+            ├── ConsultaCEPTeste.cls
+            ├── ConsultaCEPTeste.cls-meta.xml
+            ├── MockCEP.cls
+            └── MockCEP.cls-meta.xml
       └── lwc/
            └── consultaCEP/
             ├── consultaCEP.html 
