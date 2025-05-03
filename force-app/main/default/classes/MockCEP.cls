@@ -4,7 +4,6 @@ public class MockCEP implements HttpCalloutMock {
     private Integer codigoStatus;
     private String retornoReq;
 
-    // Construtor para personalizar a simulação
     public MockCEP(Integer codigoStatus, String retornoReq) {
         this.codigoStatus = codigoStatus;
         this.retornoReq = retornoReq;

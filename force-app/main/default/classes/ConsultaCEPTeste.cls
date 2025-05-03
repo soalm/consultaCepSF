@@ -3,7 +3,6 @@ private class ConsultaCEPTeste {
 
     @isTest
     private static void testeSucesso() {
-        // Simula uma resposta válida da API
         String retornoCEP = '{"cep": "60411075", "state": "CE", "city": "Fortaleza", "street": "Rua Abelardo Marinho"}';
         Test.setMock(HttpCalloutMock.class, new MockCEP(200, retornoCEP));
 
@@ -17,7 +16,6 @@ private class ConsultaCEPTeste {
 
     @isTest
     private static void testeErro() {
-        // Simula uma resposta de erro da API
         Test.setMock(HttpCalloutMock.class, new MockCEP(404, 'Not Found'));
 
         Test.startTest();
@@ -26,7 +24,7 @@ private class ConsultaCEPTeste {
             System.assert(false, 'Cep invalido');
 
         } catch (AuraHandledException e) {
-            System.assert(e.getMessage().contains('erro'), 'Mensagem de erro:' + e.getMessage());
+            System.assert(e.getMessage().contains('Erro ao consultar o CEP: Código de status '), 'Mensagem de erro:' + e.getMessage());
         }
         Test.stopTest();
     }

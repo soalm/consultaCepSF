@@ -1,17 +1,17 @@
 <template>
     <lightning-card title="Consulta de CEP">
-        <div class="slds-p-around_medium">
+        <div style="padding-left:10px">
             <lightning-input style="width:200px" label="Digite o CEP" value={cep} onchange={handleCepChange}></lightning-input>
-            <lightning-button label="Buscar Endereço" onclick={handleBuscar} class="slds-m-top_small"></lightning-button>
+            <lightning-button label="Buscar Endereço" onclick={handleBuscar}></lightning-button>
             
             <template if:true={endereco}>
-                <p class="slds-m-top_medium">Rua: {endereco.street}</p>
+                <p>Rua: {endereco.street}</p>
                 <p>Bairro: {endereco.neighborhood}</p>
                 <p>Cidade: {endereco.city} - {endereco.state}</p>
             </template>
 
             <template if:true={erro}>
-                <p class="slds-text-color_error slds-m-top_medium">{erro}</p>
+                <p>{erro}</p>
             </template>
         </div>
     </lightning-card>
