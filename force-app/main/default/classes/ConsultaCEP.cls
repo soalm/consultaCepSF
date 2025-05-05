@@ -1,5 +1,5 @@
 public with sharing class ConsultaCEP {
-    @AuraEnabled(cacheable=true) 
+    @AuraEnabled
     public static String buscarEndereco(String cep) {
         Http http = new Http(); 
         HttpRequest request = new HttpRequest(); 
@@ -9,7 +9,7 @@ public with sharing class ConsultaCEP {
         if (response.getStatusCode() == 200) { 
             return response.getBody();
         } else {
-            throw new AuraHandledException('Erro ao consultar o CEP: Código de status ' + response.getStatusCode());
+            return response.getBody() + response.getStatusCode();
         }
     }
 }

@@ -19,13 +19,8 @@ private class ConsultaCEPTeste {
         Test.setMock(HttpCalloutMock.class, new MockCEP(404, 'Not Found'));
 
         Test.startTest();
-        try {
-            ConsultaCEP.buscarEndereco('99999999');
-            System.assert(false, 'Cep invalido');
-
-        } catch (AuraHandledException e) {
-            System.assert(e.getMessage().contains('Erro ao consultar o CEP: Código de status '), 'Mensagem de erro:' + e.getMessage());
-        }
+        	String endereco = ConsultaCEP.buscarEndereco('99999999');
+        	System.assert(endereco.contains('Not Found'),'Erro ao consultar o CEP.');
         Test.stopTest();
     }
 }
